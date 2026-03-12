@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitenkumar Kandoliya | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0077b5; /* LinkedIn Blue */
+            --secondary-color: #0a66c2;
+            --bg-light: #f3f2ef;
+            --text-dark: #191919;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li { margin: 0 15px; }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover { color: var(--primary-color); }
+
+        /* Hero Section */
+        #home {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://media.licdn.com/dms/image/v2/D5616AQFesdPGKNST0A/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1719857233344?e=1775088000&v=beta&t=9EgTDveNO1K-iLI5DKLpVwzjOkKczMhPzA64LTjan9Y');
+            background-size: cover; 
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 20px; }
+
+        .btn {
+            padding: 10px 25px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: var(--secondary-color); }
+
+        /* Sections General */
+        section { padding: 80px 10% 40px; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background: var(--primary-color);
+            display: block;
+            margin: 10px auto;
+        }
+
+        /* Experience/Project Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover { color: var(--primary-color); }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Hitenkumar Kandoliya</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Hitenkumar Kandoliya</h1>
+            <p>Strategic Thinker | Problem Sover | Agile Specialist</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+            <p>Welcome! I am Hitenkumar Kandoliya. My career has been a long and rewarding journey of solving complex puzzles, spanning over two decades in project management and software development. I’ve had the privilege of guiding everything from financial automation at Citi Bank to healthcare platforms and warehouse management systems, always with an eye on bridging the gap between what a business needs and what technology can deliver. Whether I'm wearing the hat of a Scrum Master, a Project Manager, or a Product Owner, my focus remains the same: leading teams with empathy, clearing their path, and ensuring we build something we’re all proud of. Lately, I've been channeling that same curiosity into the world of AI and Machine Learning, exploring how we can use these powerful tools thoughtfully and effectively.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>M.S. in Artificial Intelligence and Machine Learning</h3>
+                <p style="color: var(--primary-color);"> Indiana Weslyne University |  March 2026- Present</p>
+                <p>Right now, I'm diving deep into the world of Artificial Intelligence and Machine Learning. For me, it’s about more than just understanding the theory—I’m focused on how to actually build things that work, while keeping ethics front and center. My classes are very hands-on, giving me the chance to experiment with modern AI tools, practice prompt engineering, and solve real problems as part of a team.</p>
+            </div>
+
+            <div class="card">
+                <h3>Masters of Computer Applications</h3>
+                <p style="color: var(--primary-color);"> Gujarat University |  May 2001 - August 2004</p>
+                <p>From 2001 to 2004, I was a student at Gujarat University, diving deep into the world of computer applications. I spent those years learning the language of technology—algorithms, databases, system design, etc. hat degree gave me the confidence to step into the professional world and start building.</p>
+            </div>
+
+             <div class="card">
+                <h3>Bachelor of Science - Mathematics</h3>
+                <p style="color: var(--primary-color);"> Saurashtra University |  May 1998 - Apr 2001</p>
+                <p>My undergraduate years from 1997 to 2001 were spent chasing equations and falling in love with logic. Studying Mathematics at Saurashtra University wasn't just about numbers—it was about learning how to think. I discovered that math is really just a language for describing patterns, and once you understand that, you start seeing patterns everywhere. That curiosity and structured thinking eventually led me to technology, but the foundation was always there, built during those four formative years.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="grid">
+           
+            <div class="card">
+                <h3>Product Owner</h3>
+                <p style="color: var(--primary-color);">Systemsoft Inc. | May 2024 - Sep 2025</p>
+                <p>Systemsoft Inc. was where I really found my stride as a Product Owner. I loved the collaborative energy—working with cross-functional teams to design solutions, define project scope, and turn client ideas into reality. It wasn't just about managing timelines; it was about understanding the tech, supporting the team, and making sure everyone felt aligned and excited about the work.</p>
+            </div>
+            <div class="card">
+                <h3>Product Owner</h3>
+                <p style="color: var(--primary-color);">Citi Bank | September 2022 - April 2024</p>
+                <p>Working at Citibank was a deep dive into the intersection of finance and technology. I led projects focused on automating manual reconciliation processes and exploring how AI could streamline syndicated loan operations, collaborating with teams and stakeholders across the globe. My role was part translator, part coach—helping business leaders articulate what they needed and guiding technical teams to build solutions that made sense. It was fast-paced and challenging, and I came away with a much deeper appreciation for how thoughtful technology can transform even the most complex financial workflows.</p>
+            </div>
+            <div class="card">
+                <h3>Project Manager</h3>
+                <p style="color: var(--primary-color);">Trinity Envision Business Services LLC | October 2021 - September 2022</p>
+                <p>Trinity Envision gave me the chance to lead a project with real purpose. We built Taste Recovery, a platform connecting people in recovery with sober living homes that could support their journey. I wore my Scrum Master and Project Manager hats proudly, helping the team navigate the complexities of development while staying true to the mission. It was rewarding work—the kind that reminds you why you got into this field in the first place.</p>
+            </div>
+            <div class="card">
+                <h3>Client Solution Manager</h3>
+                <p style="color: var(--primary-color);">Rishabh Software Pvt. Ltd. | June 2018 - September 2021</p>
+                <p>One of the things I treasured most about my time at Rishabh Software was the chance to work with such a wide range of clients. I helped a logistics company modernize their legacy warehouse system by migrating it to the cloud, supported a healthcare client in building an EHR platform with HIPAA compliance, and guided a financial services startup through their first major release. My job was to be the bridge—between clients and developers, between vision and execution. I took pride in making sure the team felt supported and the client felt heard, and that kept me energized through all the beautiful chaos.</p>
+            </div>
+             <div class="card">
+                <h3>Project Manager</h3>
+                <p style="color: var(--primary-color);">Webonomics Pvt. Ltd. | May 2017 - June 2018</p>
+                <p>At Webonomics, I wore both the Project Manager and Scrum Master hats while building a travel portal for UK-based clients. I loved the balance of big-picture thinking and hands-on work—defining project scope, designing architecture, and then jumping in to help the team clear obstacles and stay on track. It was fast-paced and collaborative, and I learned how to keep clients excited and engaged while making sure the developers had everything they needed to do their best work.</p>
+            </div>
+             <div class="card">
+                <h3>Multiple Roles (TPM | Software Developer | System Analyst)</h3>
+                <p style="color: var(--primary-color);"> Startup & Mid-size Organizations | September 2004 - May 2016</p>
+                <p>My career started in 2004 with a keyboard and a lot of curiosity. I spent the next thirteen years climbing the ladder the old-fashioned way—one project at a time. I built e-commerce platforms, led offshore teams, and helped a US-based health supplement company manage their supply chain. I learned to code, then learned to lead, and somewhere along the way discovered that my real passion was helping people work better together. By 2017, I had found my footing as a project manager who understood both the tech and the people behind it.</p>
+            </div>
+        </div>
+    </section>
+
+ 
+
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <span class="skill-badge">MS .NET</span>
+            <span class="skill-badge">SQL Server</span>
+            <span class="skill-badge">MS Power BI</span>
+            <span class="skill-badge">HTML 5 / CSS3</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Mongo DB</span>
+            <span class="skill-badge">SQL</span>
+            <span class="skill-badge">Project Management</span>
+            <span class="skill-badge">Data Analysis</span>
+            <span class="skill-badge">Cloud Computing (AWS | Azure | GCP)</span>
+            <span class="skill-badge">Stakeholder Management</span>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <p>Interested in working together? Feel free to reach out via LinkedIn or email.</p>
+            <br>
+            <a href="mailto:hitenkandoliya@yahoo.com" class="btn">Email Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/khd151254/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="margin-top: 20px;">&copy; 2026 Hitenkumar Kandoliya. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
