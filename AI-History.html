@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Timeline: 1950 to Present</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #0f1530;
+      --text: #e9eefc;
+      --muted: #a9b4d0;
+      --line: #2a3a73;
+      --accent: #72d6ff;
+      --accent-2: #a78bfa;
+      --good: #4ade80;
+      --warn: #fbbf24;
+      --bad: #fb7185;
+      --chip: #1a2348;
+      --shadow: 0 14px 38px rgba(0,0,0,.28);
+      --radius: 18px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(114,214,255,.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(167,139,250,.09), transparent 26%),
+        linear-gradient(180deg, #09101d 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 56px 0 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(18,25,51,.94), rgba(14,21,46,.95));
+      border: 1px solid rgba(114,214,255,.12);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -70px -70px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(114,214,255,.18), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(114,214,255,.1);
+      color: var(--accent);
+      font-size: .86rem;
+      letter-spacing: .02em;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      max-width: 900px;
+    }
+
+    .sub {
+      color: var(--muted);
+      max-width: 900px;
+      font-size: 1.04rem;
+      margin-top: 10px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .mini-panel {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    nav.topnav {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav.topnav a {
+      background: var(--chip);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.06);
+      font-size: .95rem;
+    }
+
+    section {
+      padding: 22px 0 14px;
+    }
+
+    .section-card {
+      background: linear-gradient(180deg, rgba(18,25,51,.92), rgba(14,21,46,.92));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 900px;
+      margin-bottom: 18px;
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.06);
+      font-size: .88rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .dot.milestone { background: var(--accent); }
+    .dot.winter { background: var(--bad); }
+    .dot.hardware { background: var(--warn); }
+    .dot.business { background: var(--accent-2); }
+
+    .timeline {
+      position: relative;
+      margin-top: 22px;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(114,214,255,.5), rgba(167,139,250,.5));
+    }
+
+    .item {
+      position: relative;
+      margin-bottom: 18px;
+      padding: 18px 18px 18px 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(114,214,255,.28);
+      background: rgba(255,255,255,.045);
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 24px;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(114,214,255,.12);
+    }
+
+    .item.winter::before { background: var(--bad); box-shadow: 0 0 0 5px rgba(251,113,133,.12); }
+    .item.hardware::before { background: var(--warn); box-shadow: 0 0 0 5px rgba(251,191,36,.12); }
+    .item.business::before { background: var(--accent-2); box-shadow: 0 0 0 5px rgba(167,139,250,.12); }
+
+    .item-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .year {
+      font-weight: 700;
+      font-size: 1.06rem;
+      color: #fff;
+    }
+
+    .tag {
+      font-size: .78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+
+    .item h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compare {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .compare h3 {
+      margin-bottom: 10px;
+      font-size: 1.12rem;
+    }
+
+    .compare ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .compare li + li {
+      margin-top: 8px;
+    }
+
+    .compute-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .chart {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 170px 1fr 72px;
+      gap: 12px;
+      align-items: center;
+      margin: 12px 0;
+    }
+
+    .bar-row .label {
+      color: var(--text);
+      font-size: .95rem;
+    }
+
+    .bar {
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .value {
+      color: var(--muted);
+      font-size: .92rem;
+      text-align: right;
+    }
+
+    .note {
+      font-size: .92rem;
+      color: var(--muted);
+      background: rgba(114,214,255,.06);
+      border: 1px solid rgba(114,214,255,.12);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 14px;
+    }
+
+    .footer {
+      color: var(--muted);
+      padding: 20px 0 40px;
+      font-size: .94rem;
+    }
+
+    .small {
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    .source-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .sticky-summary {
+      position: sticky;
+      top: 18px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-2,
+      .compute-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+
+      .value {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <span class="eyebrow">Interactive Historical Overview</span>
+        <h1>AI Timeline: From 1950 to the Modern Deep Learning Era</h1>
+        <p class="sub">
+          This page tracks major milestones in artificial intelligence, explains the AI winters,
+          distinguishes Narrow AI from AGI, and highlights how <strong>hardware</strong> and
+          <strong>business competition</strong> mattered just as much as algorithms. A recurring theme:
+          progress came when ideas, data, funding, and compute finally lined up.
+        </p>
+
+        <div class="hero-grid">
+          <div class="mini-panel">
+            <h2 style="font-size:1.15rem;">AI History</h2>
+            <p class="small">
+              AI history is not a smooth march upward. It moves in waves. Early optimism outran
+              available computing power, causing setbacks. Later, the transistor, specialized chips,
+              GPUs, large datasets, internet platforms, and cloud infrastructure turned many once-theoretical
+              ideas into practical systems.
+            </p>
+            <nav class="topnav" aria-label="Section navigation">
+              <a href="#timeline">Timeline</a>
+              <a href="#winters">AI Winters</a>
+              <a href="#recent">Recent Successes</a>
+              <a href="#narrow-vs-agi">Narrow AI vs AGI</a>
+              <a href="#compute">Compute Growth</a>
+            </nav>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>1950</strong>
+              <span class="small">Turing frames the central machine intelligence question.</span>
+            </div>
+            <div class="stat">
+              <strong>2 major winters</strong>
+              <span class="small">Funding and confidence collapsed when promises outpaced results.</span>
+            </div>
+            <div class="stat">
+              <strong>2012+</strong>
+              <span class="small">Deep learning becomes commercially dominant after GPU breakthroughs.</span>
+            </div>
+            <div class="stat">
+              <strong>Cloud era</strong>
+              <span class="small">AWS, Azure, and Google Cloud make large-scale AI deployment practical.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="timeline">
+      <div class="section-card">
+        <h2>Historical Context and Major Milestones</h2>
+        <p class="section-lead">
+          The timeline below mixes scientific milestones, hardware breakthroughs, commercial inflection
+          points, and the two classic AI winters. Use it as a compact map of how the field evolved.
+        </p>
+
+        <div class="legend" aria-label="Legend">
+          <span class="chip"><span class="dot milestone"></span> Milestone</span>
+          <span class="chip"><span class="dot winter"></span> AI Winter</span>
+          <span class="chip"><span class="dot hardware"></span> Hardware / Compute</span>
+          <span class="chip"><span class="dot business"></span> Business / Platform Shift</span>
+        </div>
+
+        <div class="timeline" id="timelineContainer"></div>
+      </div>
+    </section>
+
+    <section id="winters">
+      <div class="section-card">
+        <h2>AI Winters: What They Were and Why They Happened</h2>
+        <p class="section-lead">
+          “AI winter” describes periods when excitement, investment, and progress cooled sharply.
+          The causes were not just bad science. They also included limited hardware, weak data availability,
+          inflated expectations, and funding structures that punished slow-moving research.
+        </p>
+
+        <div class="grid-2">
+          <div class="compare">
+            <h3>First AI Winter (roughly 1974–1980)</h3>
+            <ul>
+              <li>Early AI had promised human-level reasoning far too soon.</li>
+              <li>Computers were slow, memory was expensive, and symbolic systems broke outside narrow toy problems.</li>
+              <li>Machine translation and general reasoning disappointed funders.</li>
+              <li>Critiques such as the Lighthill Report in the UK damaged confidence in broad AI claims.</li>
+              <li>Impact: research budgets tightened and the field’s ambitions became more cautious.</li>
+            </ul>
+          </div>
+
+          <div class="compare">
+            <h3>Second AI Winter (roughly 1987–1993)</h3>
+            <ul>
+              <li>Expert systems had generated real business value, but they were costly to maintain and brittle.</li>
+              <li>The dedicated Lisp machine market collapsed as general-purpose workstations improved.</li>
+              <li>Rule-based systems struggled with uncertainty, scale, and changing real-world data.</li>
+              <li>Commercial hype crashed, reducing venture interest and enterprise spending.</li>
+              <li>Impact: AI survived, but momentum shifted toward statistics, probability, and data-driven methods.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recent">
+      <div class="section-card">
+        <h2>Recent Successes: Why AI Took Off Again</h2>
+        <p class="section-lead">
+          Modern AI success came from the convergence of several forces: better algorithms, much larger datasets,
+          powerful GPUs, cloud computing, internet-scale distribution, and aggressive competition among large tech firms.
+        </p>
+
+        <div class="grid-2">
+          <div class="compare">
+            <h3>Why deep learning worked this time</h3>
+            <ul>
+              <li><strong>More data:</strong> the web, smartphones, and digital platforms created huge training corpora.</li>
+              <li><strong>More compute:</strong> GPUs made matrix-heavy neural network training vastly faster than CPUs alone.</li>
+              <li><strong>Better methods:</strong> backpropagation matured, convolutional nets proved themselves in vision, and transformers generalized across language and multimodal tasks.</li>
+              <li><strong>Better software:</strong> CUDA, PyTorch, TensorFlow, and distributed training frameworks reduced friction.</li>
+              <li><strong>Cloud deployment:</strong> AWS, Google Cloud, and Azure made training and serving large models economically feasible at global scale.</li>
+            </ul>
+          </div>
+
+          <div class="compare">
+            <h3>Key figures, firms, and rivalries</h3>
+            <ul>
+              <li><strong>Researchers:</strong> Alan Turing, John McCarthy, Marvin Minsky, Frank Rosenblatt, Geoffrey Hinton, Yann LeCun, Yoshua Bengio, Demis Hassabis, Ilya Sutskever, Fei-Fei Li, and many others.</li>
+              <li><strong>Hardware leaders:</strong> Bell Labs helped launch the transistor age; NVIDIA became central in the GPU era.</li>
+              <li><strong>Platform players:</strong> Google, Microsoft, Meta, Amazon, OpenAI, IBM, and DeepMind each pushed different commercialization paths.</li>
+              <li><strong>Silicon Valley rivalry:</strong> Google vs Microsoft in search and productivity AI; NVIDIA vs alternative accelerator efforts; Meta’s open-model strategy vs more closed model providers.</li>
+              <li><strong>Bottom line:</strong> AI leadership became a contest over chips, clouds, talent, data, distribution, and capital, not just papers.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          The transistor and the GPU deserve equal billing with mathematical breakthroughs.
+          Without cheap, dense semiconductors and massively parallel processors, many neural-network
+          ideas would have stayed academically interesting but commercially impractical.
+        </div>
+      </div>
+    </section>
+
+    <section id="narrow-vs-agi">
+      <div class="section-card">
+        <h2>Narrow AI vs Artificial General Intelligence (AGI)</h2>
+        <p class="section-lead">
+          A major source of confusion in public discussion is that today’s systems are highly capable
+          in many domains, yet still generally classified as <strong>Narrow AI</strong>, not AGI.
+        </p>
+
+        <div class="grid-2">
+          <div class="compare">
+            <h3>Narrow AI</h3>
+            <ul>
+              <li>Designed for specific or bounded tasks.</li>
+              <li>Can exceed human performance in narrow domains such as chess, Go, image classification, speech recognition, or code completion.</li>
+              <li>May look broadly capable, but performance often depends on training distribution, tooling, and context windows.</li>
+              <li>Most production AI today falls into this category, including large language models used in practical systems.</li>
+            </ul>
+          </div>
+
+          <div class="compare">
+            <h3>AGI</h3>
+            <ul>
+              <li>A hypothetical system with robust, flexible, general-purpose intelligence across many domains.</li>
+              <li>Would be expected to transfer knowledge broadly, reason reliably in unfamiliar settings, and operate with less task-specific scaffolding.</li>
+              <li>No consensus exists that AGI has been achieved.</li>
+              <li>Public arguments often hinge on definitions, benchmarks, autonomy, reliability, and the ability to generalize beyond carefully structured prompts.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compute">
+      <div class="section-card">
+        <div class="compute-wrap">
+          <div class="chart">
+            <h2>Computation Growth Curves</h2>
+            <p class="section-lead" style="margin-bottom: 8px;">
+              A useful way to understand modern AI is to compare how quickly effective AI training compute
+              has been growing relative to older semiconductor-era expectations.
+            </p>
+
+            <div class="bar-row">
+              <div class="label">Classic Moore-style transistor scaling</div>
+              <div class="bar"><span style="width: 100%;"></span></div>
+              <div class="value">~24 months</div>
+            </div>
+
+            <div class="bar-row">
+              <div class="label">Approx. mainstream hardware-era improvement benchmark</div>
+              <div class="bar"><span style="width: 84%;"></span></div>
+              <div class="value">~18 months</div>
+            </div>
+
+            <div class="bar-row">
+              <div class="label">Frontier AI training compute (mid-2010s acceleration)</div>
+              <div class="bar"><span style="width: 28%;"></span></div>
+              <div class="value">~6 months</div>
+            </div>
+
+            <div class="bar-row">
+              <div class="label">Cloud + accelerator era effective scaling</div>
+              <div class="bar"><span style="width: 38%;"></span></div>
+              <div class="value">~8–10 months</div>
+            </div>
+
+            <div class="note">
+              Smaller doubling times mean faster growth. The broad pattern is that frontier AI compute
+              began scaling much faster than classic Moore’s law alone would suggest, because AI labs
+              combined denser chips with distributed training, huge capital budgets, cloud infrastructure,
+              and specialized accelerators.
+            </div>
+          </div>
+
+          <div class="sticky-summary">
+            <div class="compare">
+              <h3>Why the doubling time shrank</h3>
+              <ul>
+                <li>GPU parallelism fit neural network math extremely well.</li>
+                <li>Specialized software stacks improved hardware utilization.</li>
+                <li>Hyperscale cloud providers concentrated capital and infrastructure.</li>
+                <li>Companies were willing to spend far more on model training.</li>
+                <li>Model scaling laws encouraged a race to bigger datasets and bigger runs.</li>
+              </ul>
+            </div>
+
+            <div class="compare" style="margin-top: 18px;">
+              <h3>Important caveat</h3>
+              <ul>
+                <li>“AI processing power” can mean chips shipped, FLOPs available, training compute used, or inference capacity deployed.</li>
+                <li>Different metrics produce different curves.</li>
+                <li>The key historical point remains solid: recent AI progress depended on much faster effective compute growth than earlier eras enjoyed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2>Takeaway</h2>
+        <p class="section-lead">
+          AI’s history is best understood as the interaction of four forces: <strong>ideas</strong>,
+          <strong>hardware</strong>, <strong>capital</strong>, and <strong>competition</strong>.
+          The field surged when all four aligned, and froze when one or more fell short.
+          The current era is powerful not because one algorithm “solved intelligence,” but because
+          modern systems combine decades of mathematical work with cloud-scale compute, GPU acceleration,
+          abundant data, and intense commercial rivalry.
+        </p>
+
+        <!-- <h3 style="margin-top: 8px;">Suggested sources to cite in a published version</h3>
+        <ul class="source-list">
+          <li>Alan Turing (1950), “Computing Machinery and Intelligence”</li>
+          <li>Dartmouth Summer Research Project on Artificial Intelligence (1956)</li>
+          <li>Backpropagation revival literature in the 1980s</li>
+          <li>Deep learning milestones from ImageNet / AlexNet (2012)</li>
+          <li>OpenAI analysis on AI and compute growth (for the “doubling time” discussion)</li>
+          <li>Historical overviews of expert systems, the Lisp machine market, and the Lighthill Report</li>
+        </ul> -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Created By: Hitenkumar Kandoliya
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    const timelineData = [
+      {
+        year: "1950",
+        title: "Alan Turing publishes “Computing Machinery and Intelligence”",
+        type: "milestone",
+        tag: "Foundational idea",
+        desc: "Turing reframes the question from 'Can machines think?' to an operational test of intelligent behavior. This becomes one of the intellectual starting points for AI."
+      },
+      {
+        year: "1950s",
+        title: "The transistor era makes modern computing practical",
+        type: "hardware",
+        tag: "Hardware breakthrough",
+        desc: "Semiconductor advances lower cost, size, and power requirements for computers. AI would later depend on decades of progress built on the transistor."
+      },
+      {
+        year: "1956",
+        title: "Dartmouth conference coins the term 'Artificial Intelligence'",
+        type: "milestone",
+        tag: "Birth of the field",
+        desc: "John McCarthy and collaborators help formalize AI as a research discipline. Early optimism is extremely high."
+      },
+      {
+        year: "1958",
+        title: "Frank Rosenblatt introduces the perceptron",
+        type: "milestone",
+        tag: "Early neural network",
+        desc: "The perceptron sparks excitement about machine learning, but hardware and theory limitations keep it from fulfilling early hopes."
+      },
+      {
+        year: "1960s",
+        title: "Symbolic AI dominates early research",
+        type: "milestone",
+        tag: "Reasoning systems",
+        desc: "Researchers focus on logic, search, theorem proving, and symbolic representations. Progress is real, but often limited to narrow, simplified environments."
+      },
+      {
+        year: "1966",
+        title: "ELIZA demonstrates conversational pattern matching",
+        type: "milestone",
+        tag: "NLP milestone",
+        desc: "ELIZA shows that relatively simple systems can create an illusion of understanding, an idea that still matters in public reactions to AI."
+      },
+      {
+        year: "1969",
+        title: "Perceptrons critique slows neural network enthusiasm",
+        type: "milestone",
+        tag: "Field correction",
+        desc: "Minsky and Papert highlight limitations of simple perceptrons, contributing to a swing back toward symbolic methods."
+      },
+      {
+        year: "1970",
+        title: "SHRDLU showcases language in a toy blocks world",
+        type: "milestone",
+        tag: "Language understanding",
+        desc: "The system is impressive inside a constrained environment, but its limits underscore how hard general intelligence really is."
+      },
+      {
+        year: "1974–1980",
+        title: "First AI Winter",
+        type: "winter",
+        tag: "Funding collapse",
+        desc: "Expectations exceed available compute, memory, and algorithmic robustness. Governments and institutions cut back support after disappointing results."
+      },
+      {
+        year: "Late 1970s–1980s",
+        title: "Expert systems revive commercial AI",
+        type: "milestone",
+        tag: "Commercial success",
+        desc: "Rule-based systems find real business uses in diagnostics, configuration, and decision support, especially in enterprises."
+      },
+      {
+        year: "1986",
+        title: "Backpropagation helps revive neural networks",
+        type: "milestone",
+        tag: "Learning breakthrough",
+        desc: "Work by Rumelhart, Hinton, and Williams helps make multilayer neural networks trainable at meaningful scales, though compute remains a bottleneck."
+      },
+      {
+        year: "1987–1993",
+        title: "Second AI Winter",
+        type: "winter",
+        tag: "Hype crashes again",
+        desc: "Expert systems prove brittle and expensive to maintain. The Lisp machine market collapses, and broad commercial enthusiasm drops."
+      },
+      {
+        year: "1990s",
+        title: "Statistical machine learning grows in importance",
+        type: "milestone",
+        tag: "Probabilistic turn",
+        desc: "AI shifts toward data-driven methods, probabilistic models, support vector machines, and better empirical evaluation."
+      },
+      {
+        year: "1997",
+        title: "IBM Deep Blue defeats Garry Kasparov",
+        type: "business",
+        tag: "Public milestone",
+        desc: "A landmark symbolic-plus-search achievement shows machines can defeat top humans in narrowly defined domains with large compute support."
+      },
+      {
+        year: "2006",
+        title: "Deep learning re-emerges and CUDA launches",
+        type: "hardware",
+        tag: "GPU era begins",
+        desc: "Neural net research gains momentum again, while programmable GPUs and NVIDIA's CUDA ecosystem become crucial for scaling deep learning."
+      },
+      {
+        year: "2007–2010",
+        title: "Cloud computing changes AI economics",
+        type: "business",
+        tag: "Infrastructure shift",
+        desc: "AWS, later Google Cloud and Azure, make it easier for startups and labs to rent large-scale compute instead of owning all infrastructure outright."
+      },
+      {
+        year: "2009",
+        title: "ImageNet helps create a large-scale vision benchmark",
+        type: "milestone",
+        tag: "Data milestone",
+        desc: "Large labeled datasets become central to progress, especially in computer vision."
+      },
+      {
+        year: "2012",
+        title: "AlexNet wins ImageNet with GPU-trained deep learning",
+        type: "hardware",
+        tag: "Deep learning breakout",
+        desc: "This is a decisive turning point. Better algorithms, large data, and GPUs combine to dramatically outperform previous image recognition systems."
+      },
+      {
+        year: "2014",
+        title: "GANs accelerate generative modeling research",
+        type: "milestone",
+        tag: "Generative AI",
+        desc: "Generative adversarial networks open a new phase in image synthesis and representation learning."
+      },
+      {
+        year: "2014",
+        title: "Major platform firms intensify AI competition",
+        type: "business",
+        tag: "Silicon Valley rivalry",
+        desc: "Google acquires DeepMind, Microsoft deepens AI investment, Facebook/Meta builds AI research capacity, and Amazon integrates AI into cloud services."
+      },
+      {
+        year: "2016",
+        title: "AlphaGo defeats Lee Sedol",
+        type: "milestone",
+        tag: "Reinforcement learning",
+        desc: "A symbolic moment for modern AI, combining deep learning, search, and massive compute to solve a game once seen as far beyond brute-force approaches."
+      },
+      {
+        year: "2017",
+        title: "The Transformer architecture is introduced",
+        type: "milestone",
+        tag: "Foundation models",
+        desc: "Transformers become the backbone of modern language models and later many multimodal systems."
+      },
+      {
+        year: "2018",
+        title: "Large-scale language pretraining becomes central",
+        type: "milestone",
+        tag: "NLP shift",
+        desc: "Models such as BERT show how pretraining followed by task adaptation can produce major gains across language tasks."
+      },
+      {
+        year: "2018+",
+        title: "Frontier AI compute begins scaling unusually fast",
+        type: "hardware",
+        tag: "Compute race",
+        desc: "Training runs for leading models increase far faster than classic Moore-style expectations, driven by capital spending, distributed systems, and accelerators."
+      },
+      {
+        year: "2020",
+        title: "Very large language models become commercially important",
+        type: "business",
+        tag: "Platform transition",
+        desc: "The field shifts toward general-purpose foundation models that can be adapted across many tasks, changing both research priorities and product strategy."
+      },
+      {
+        year: "2022",
+        title: "Generative AI reaches mainstream public awareness",
+        type: "business",
+        tag: "Consumer inflection point",
+        desc: "Text-to-image systems and chat-based language models dramatically expand public attention, investor interest, and enterprise experimentation."
+      },
+      {
+        year: "2023",
+        title: "The cloud-AI alliance hardens",
+        type: "business",
+        tag: "Market structure",
+        desc: "Model builders and cloud providers become tightly linked. Access to chips, training infrastructure, and global deployment channels becomes a strategic moat."
+      },
+      {
+        year: "2023–2024",
+        title: "Open vs closed model competition intensifies",
+        type: "business",
+        tag: "Ecosystem split",
+        desc: "Some firms emphasize proprietary frontier models and integrated products, while others push open or open-weight approaches to accelerate adoption and ecosystem control."
+      },
+      {
+        year: "2025-26",
+        title: "Open Model Ecosystem Expands and Real-Time Multimodal Assistants and Reasoning Models",
+        type: "business",
+        tag: "Current era",
+        desc: "Open-weight and community-developed models grow rapidly, enabling organizations and developers to run advanced AI locally or on private infrastructure. This fuels innovation in research, startups, and edge AI deployments, while also increasing competition between open and proprietary AI systems."
+      }
+    ];
+
+    const timelineContainer = document.getElementById("timelineContainer");
+
+    const typeClass = (type) => {
+      if (type === "winter") return "winter";
+      if (type === "hardware") return "hardware";
+      if (type === "business") return "business";
+      return "";
+    };
+
+    timelineData.forEach(entry => {
+      const article = document.createElement("article");
+      article.className = `item ${typeClass(entry.type)}`;
+      article.innerHTML = `
+        <div class="item-top">
+          <span class="year">${entry.year}</span>
+          <span class="tag">${entry.tag}</span>
+        </div>
+        <h3>${entry.title}</h3>
+        <p>${entry.desc}</p>
+      `;
+      timelineContainer.appendChild(article);
+    });
+  </script>
+</body>
+</html>
