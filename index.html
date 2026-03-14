@@ -273,7 +273,7 @@
         </div>
     </section>
 
-        <section id="portfolio">
+        <!-- <section id="portfolio">
         <h2 class="section-title">Portfolio</h2>
         <div class="grid">
             <div class="card">
@@ -295,7 +295,201 @@
             </div>
             
         </div>
-    </section>
+    </section> -->
+
+    <section id="portfolio">
+    <style>
+        /* Portfolio section styling */
+        .portfolio-wrapper {
+            padding: 20px 0;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,120,212,0.2);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .card-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .card-link {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .card-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,120,212,0.4);
+            color: white;
+        }
+        
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background: #f0f7ff;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+    </style>
+
+    <div class="portfolio-wrapper">
+        <h2 class="section-title">My Portfolio</h2>
+        
+        <div class="portfolio-grid">
+            <!-- Card 1: AI Timeline -->
+            <div class="portfolio-card">
+                <img 
+                    class="card-image" 
+                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" 
+                    alt="AI Timeline visualization with neural network concept"
+                    loading="lazy"
+                >
+                <div class="card-content">
+                    <h3 class="card-title">🤖 AI Timeline</h3>
+                    <div class="card-tags">
+                        <span class="tag">Artificial Intelligence</span>
+                        <span class="tag">History</span>
+                        <span class="tag">Machine Learning</span>
+                    </div>
+                    <p class="card-description">
+                        Explore the fascinating journey of artificial intelligence from its conceptual beginnings in the 1950s to today's cutting-edge developments. This interactive timeline highlights key breakthroughs, influential researchers, and paradigm shifts that shaped modern AI.
+                    </p>
+                    <a href="AI-History.html" class="card-link">Explore Timeline →</a>
+                </div>
+            </div>
+
+            <!-- Card 2: HR Interview Chatbot -->
+            <div class="portfolio-card">
+                <img 
+                    class="card-image" 
+                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" 
+                    alt="Professional HR interview conversation concept"
+                    loading="lazy"
+                >
+                <div class="card-content">
+                    <h3 class="card-title">💼 HR Interview Chatbot</h3>
+                    <div class="card-tags">
+                        <span class="tag">AI Chatbot</span>
+                        <span class="tag">HR Tech</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    <p class="card-description">
+                        Practice your interview skills with this intelligent HR chatbot. It simulates real interview scenarios, asks relevant questions based on your target role, provides instant feedback on your responses, and tracks your progress over multiple practice sessions.
+                    </p>
+                    <a href="https://hrinterviewchatbot-2agqcrq4bbd9fyh7qmlcpn.streamlit.app/" class="card-link" target="_blank">Try Demo →</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Change Management Framework -->
+            <div class="portfolio-card">
+                <img 
+                    class="card-image" 
+                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" 
+                    alt="Business strategy and change management documents"
+                    loading="lazy"
+                >
+                <div class="card-content">
+                    <h3 class="card-title">🔄 Change Management Framework</h3>
+                    <div class="card-tags">
+                        <span class="tag">Leadership</span>
+                        <span class="tag">Strategy</span>
+                        <span class="tag">PDF Guide</span>
+                        <span class="tag">Templates</span>
+                    </div>
+                    <p class="card-description">
+                        A comprehensive cheat sheet for navigating organizational change. Based on proven methodologies like Kotter's 8-Step Model and ADKAR, this framework includes practical templates, stakeholder analysis tools, communication plans, and risk assessment matrices.
+                    </p>
+                    <a href="Change_Management_Cheat_Sheet.pdf" class="card-link" download>Download PDF →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Optional: Add a fourth card if you have more portfolio items -->
+        <!--
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="#" style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 500; display: inline-block;">View All Projects →</a>
+        </div>
+        -->
+    </div>
+</section>
 
     <section id="contact">
         <h2 class="section-title">Contact Me</h2>
