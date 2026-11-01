@@ -3,60 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Machine Learning Algorithms at a Glance</title>
+<title>Machine Learning Algorithms at a Glance | Hitenkumar Kandoliya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
 <style>
-:root{--navy:#0B2A4A;--teal:#2A9D8F;--teal-d:#1B7A6E;--teal-t:#E6F4F1;--coral:#E76F51;--coral-d:#C2452A;--coral-t:#FDECE7;--gold:#E9B949;--bg:#FBF8F1;--ink:#26384D}
+:root{
+  /* Portfolio palette (hi10kandoliya.github.io) */
+  --primary:#0077b5;--secondary:#0a66c2;--bg:#f3f2ef;--ink:#191919;--dark:#222;--muted:#666;
+  /* Infographic roles: Supervised = portfolio blue, Unsupervised = portfolio charcoal */
+  --sup:#0077b5;--sup-d:#0a66c2;--unsup:#555;--unsup-d:#222;
+  --shadow:0 4px 12px rgba(0,0,0,.08)
+}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins',system-ui,sans-serif;line-height:1.5}
+
+/* ===== Common header (same as portfolio nav) ===== */
+.site-nav{background:#fff;display:flex;justify-content:space-around;align-items:center;padding:1rem 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.site-nav .logo{font-size:1.5rem;font-weight:700;color:var(--primary);text-decoration:none}
+.site-nav ul{display:flex;list-style:none;margin:0;padding:0}
+.site-nav li{margin:0 15px}
+.site-nav li a{text-decoration:none;color:var(--ink);font-weight:500;transition:.3s}
+.site-nav li a:hover,.site-nav li a.active{color:var(--primary)}
+.site-nav a:focus-visible,.site-footer a:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:3px}
+
+/* ===== Page ===== */
 .wrap{max-width:1100px;margin:0 auto;padding:40px 20px 56px}
-h1{margin:0;text-align:center;color:var(--navy);font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;font-weight:700}
-.rule{height:2px;background:var(--gold);width:min(320px,60%);margin:18px auto 28px;position:relative}
-.rule::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%)}
-.box{border:2px solid var(--gold);border-radius:14px;background:#fff}
+h1{margin:0;text-align:center;color:var(--ink);font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;font-weight:700}
+.rule{height:4px;width:60px;margin:18px auto 28px;background:linear-gradient(90deg,var(--primary),var(--secondary));border-radius:2px}
+.box{border-radius:14px;background:#fff;box-shadow:var(--shadow)}
 .legend{display:flex;flex-wrap:wrap;gap:12px 36px;align-items:center;justify-content:center;padding:14px 20px;font-size:.9rem}
-.legend strong{color:var(--navy);font-size:1.05rem}
+.legend strong{color:var(--ink);font-size:1.05rem}
 .legend span{display:flex;align-items:center;gap:10px}
 .dot{width:26px;height:26px;border-radius:50%;flex:none}
-.t{background:var(--teal)}.c{background:var(--coral)}
+.dot.t{background:var(--sup)}.dot.c{background:var(--unsup)}
 .tree{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:44px 0 28px;position:relative}
-.tree::before{content:"";position:absolute;top:-24px;left:25%;right:25%;height:24px;border:2px solid var(--navy);border-bottom:0;border-radius:10px 10px 0 0}
+.tree::before{content:"";position:absolute;top:-24px;left:25%;right:25%;height:24px;border:2px solid var(--dark);border-bottom:0;border-radius:10px 10px 0 0}
 .main{border-radius:12px;color:#fff;text-align:center;padding:16px 18px;margin:0 8%}
 .main h2{margin:0;font-size:1.25rem;font-weight:600;letter-spacing:.02em}
 .main p{margin:4px 0 0;font-size:.92rem}
-.main.t{background:var(--teal-d)}.main.c{background:var(--coral-d)}
+.main.t{background:var(--sup-d)}.main.c{background:var(--unsup-d)}
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px;position:relative}
-.cats::before{content:"";position:absolute;top:-26px;left:16%;right:16%;height:26px;border:2px solid var(--navy);border-bottom:0;border-radius:10px 10px 0 0}
+.cats::before{content:"";position:absolute;top:-26px;left:16%;right:16%;height:26px;border:2px solid var(--dark);border-bottom:0;border-radius:10px 10px 0 0}
 .cat{border:2px solid;border-radius:12px;background:#fff;padding:10px 6px 12px;text-align:center;font-size:.8rem}
-.cat.t{border-color:var(--teal)}.cat.c{border-color:var(--coral)}
+.cat.t{border-color:var(--sup)}.cat.c{border-color:var(--unsup)}
 .cat h3{margin:0 0 6px;font-size:.72rem;font-weight:600;letter-spacing:.03em}
-.cat.t h3{color:var(--teal-d)}.cat.c h3{color:var(--coral-d)}
+.cat.t h3{color:var(--sup-d)}.cat.c h3{color:var(--unsup-d)}
 .cat svg{width:56px;height:56px;display:block;margin:0 auto 6px}
-.cat p{margin:0;font-weight:500;color:var(--navy);line-height:1.3}
+.cat p{margin:0;font-weight:500;color:var(--ink);line-height:1.3}
 .domains{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:14px 18px;margin-bottom:28px}
-.domains strong{color:var(--navy);margin-right:6px}
+.domains strong{color:var(--ink);margin-right:6px}
 .chip{display:inline-block;color:#fff;font-size:.74rem;font-weight:600;padding:3px 12px;border-radius:8px;letter-spacing:.02em}
-.d-tab{background:var(--teal-d)}.d-cv{background:#3F5E9A}.d-nlp{background:#6B4FA0}.d-gen{background:var(--coral-d)}
+.d-tab{background:var(--primary)}.d-cv{background:#00507a}.d-nlp{background:var(--muted)}.d-gen{background:var(--dark)}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.card{border:2px solid;border-radius:14px;background:#fff;padding:16px 18px;display:grid;grid-template-columns:64px 1fr;gap:6px 16px}
-.card.t{border-color:var(--teal)}.card.c{border-color:var(--coral)}
+.card{border:2px solid;border-radius:14px;background:#fff;padding:16px 18px;display:grid;grid-template-columns:64px 1fr;gap:6px 16px;box-shadow:var(--shadow)}
+.card.t{border-color:var(--sup)}.card.c{border-color:var(--unsup)}
 .card .ic{width:64px;height:64px;grid-row:1/3}
-.card h3{margin:0;font-size:1.1rem;color:var(--navy);line-height:1.25}
+.card h3{margin:0;font-size:1.1rem;color:var(--ink);line-height:1.25}
 .pill{display:inline-block;font-size:.72rem;font-weight:600;color:#fff;padding:1px 10px;border-radius:99px;margin-left:6px;vertical-align:2px}
-.t .pill{background:var(--teal-d)}.c .pill{background:var(--coral-d)}
+.t .pill{background:var(--sup-d)}.c .pill{background:var(--unsup-d)}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.card p{margin:0;font-size:.86rem;grid-column:2}
-.card p b{color:var(--navy)}
+.card p{margin:0;font-size:.86rem;grid-column:2;color:var(--muted)}
+.card p b{color:var(--ink)}
 .diff{margin-top:28px;overflow:hidden}
-.diff h2{margin:0;background:var(--navy);color:#fff;text-align:center;font-size:1rem;padding:8px}
+.diff h2{margin:0;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;text-align:center;font-size:1rem;padding:8px}
 .diff ul{list-style:none;margin:0;padding:18px 12px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;text-align:center}
-.diff li{font-size:.82rem;color:var(--navy)}
+.diff li{font-size:.82rem;color:var(--ink)}
 .diff li b{display:block;font-size:.85rem}
-.diff li.t b{color:var(--teal-d)}.diff li.c b{color:var(--coral-d)}
+.diff li.t b{color:var(--sup-d)}.diff li.c b{color:var(--unsup-d)}
 .diff svg{width:44px;height:44px;display:block;margin:0 auto 6px}
-.foot{margin-top:14px;padding:12px 18px;text-align:center;font-weight:500;color:var(--navy);font-size:.95rem}
+.foot{margin-top:14px;padding:12px 18px;text-align:center;font-weight:500;color:var(--ink);font-size:.95rem}
+
+/* ===== Common footer (same as portfolio footer) ===== */
+.site-footer{background:#222;color:#fff;text-align:center;padding:40px 16px}
+.site-footer .social-links a{display:inline-block;color:#fff;margin:0 10px;transition:.3s}
+.site-footer .social-links a:hover{color:var(--primary)}
+.site-footer .social-links svg{width:1.5rem;height:1.5rem;fill:currentColor;display:block}
+.site-footer p{margin:20px 0 0}
+
 @media(max-width:820px){.tree,.cards{grid-template-columns:1fr}.tree::before{display:none}.main{margin:0}.diff ul{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.site-nav ul{display:none}}
 @media(max-width:520px){.cats{grid-template-columns:1fr}.cats::before{display:none}.card{grid-template-columns:1fr}.card .ic{grid-row:auto}.card p{grid-column:1}}
 </style>
 </head>
@@ -80,6 +105,19 @@ h1{margin:0;text-align:center;color:var(--navy);font-size:clamp(2rem,5vw,3.4rem)
 </defs>
 </svg>
 
+<nav class="site-nav" aria-label="Portfolio">
+<a class="logo" href="https://hi10kandoliya.github.io/Hi10Kandoliya/#home">Hitenkumar Kandoliya</a>
+<ul>
+<li><a href="https://hi10kandoliya.github.io/Hi10Kandoliya/#home">Home</a></li>
+<li><a href="https://hi10kandoliya.github.io/Hi10Kandoliya/#about">About</a></li>
+<li><a href="https://hi10kandoliya.github.io/Hi10Kandoliya/#education">Education</a></li>
+<li><a href="https://hi10kandoliya.github.io/Hi10Kandoliya/#experience">Experience</a></li>
+<li><a href="https://hi10kandoliya.github.io/Hi10Kandoliya/#skills">Skills</a></li>
+<li><a class="active" href="https://hi10kandoliya.github.io/Hi10Kandoliya/#Artifacts">Portfolio</a></li>
+<li><a href="https://hi10kandoliya.github.io/Hi10Kandoliya/#contact">Contact</a></li>
+</ul>
+</nav>
+
 <main class="wrap">
 <h1>Machine Learning<br>Algorithms at a Glance</h1>
 <div class="rule"></div>
@@ -94,17 +132,17 @@ h1{margin:0;text-align:center;color:var(--navy);font-size:clamp(2rem,5vw,3.4rem)
 <div>
 <div class="main t"><h2>SUPERVISED LEARNING</h2><p>Learns from labelled examples to predict an outcome.</p></div>
 <div class="cats">
-<div class="cat t"><h3>REGRESSION</h3><svg style="color:var(--teal-d)" aria-hidden="true"><use href="#reg"/></svg><p>Predict continuous values</p></div>
-<div class="cat t"><h3>CLASSIFICATION</h3><svg style="color:var(--teal-d)" aria-hidden="true"><use href="#cls"/></svg><p>Predict categories</p></div>
-<div class="cat t"><h3>DEEP LEARNING</h3><svg style="color:var(--teal-d)" aria-hidden="true"><use href="#net"/></svg><p>Learn complex representations</p></div>
+<div class="cat t"><h3>REGRESSION</h3><svg style="color:var(--sup-d)" aria-hidden="true"><use href="#reg"/></svg><p>Predict continuous values</p></div>
+<div class="cat t"><h3>CLASSIFICATION</h3><svg style="color:var(--sup-d)" aria-hidden="true"><use href="#cls"/></svg><p>Predict categories</p></div>
+<div class="cat t"><h3>DEEP LEARNING</h3><svg style="color:var(--sup-d)" aria-hidden="true"><use href="#net"/></svg><p>Learn complex representations</p></div>
 </div>
 </div>
 <div>
 <div class="main c"><h2>UNSUPERVISED LEARNING</h2><p>Finds structure in unlabelled data.</p></div>
 <div class="cats">
-<div class="cat c"><h3>CLUSTERING</h3><svg style="color:var(--coral-d)" aria-hidden="true"><use href="#clus"/></svg><p>Discover natural groups</p></div>
-<div class="cat c"><h3>DIMENSIONALITY REDUCTION</h3><svg style="color:var(--coral-d)" aria-hidden="true"><use href="#pca"/></svg><p>Simplify data structure</p></div>
-<div class="cat c"><h3>GENERATIVE AI</h3><svg style="color:var(--coral-d)" aria-hidden="true"><use href="#gan"/></svg><p>Generate new data or content</p></div>
+<div class="cat c"><h3>CLUSTERING</h3><svg style="color:var(--unsup-d)" aria-hidden="true"><use href="#clus"/></svg><p>Discover natural groups</p></div>
+<div class="cat c"><h3>DIMENSIONALITY REDUCTION</h3><svg style="color:var(--unsup-d)" aria-hidden="true"><use href="#pca"/></svg><p>Simplify data structure</p></div>
+<div class="cat c"><h3>GENERATIVE AI</h3><svg style="color:var(--unsup-d)" aria-hidden="true"><use href="#gan"/></svg><p>Generate new data or content</p></div>
 </div>
 </div>
 </section>
@@ -114,52 +152,52 @@ h1{margin:0;text-align:center;color:var(--navy);font-size:clamp(2rem,5vw,3.4rem)
 
 <section class="cards" aria-label="Algorithms">
 
-<article class="card t"><svg class="ic" style="color:var(--teal-d)" aria-hidden="true"><use href="#reg"/></svg>
+<article class="card t"><svg class="ic" style="color:var(--sup-d)" aria-hidden="true"><use href="#reg"/></svg>
 <div><h3>Linear Regression <span class="pill">Supervised</span></h3><div class="meta"><span class="chip d-tab">Tabular Data</span></div></div>
 <p><b>Use case:</b> Predict house prices from size, location and number of rooms.</p>
 <p><b>How it works:</b> Fits a straight line through the data to describe the relationship between input features and a continuous numeric target.</p></article>
 
-<article class="card t"><svg class="ic" style="color:var(--teal-d)" aria-hidden="true"><use href="#bell"/></svg>
+<article class="card t"><svg class="ic" style="color:var(--sup-d)" aria-hidden="true"><use href="#bell"/></svg>
 <div><h3>Naive Bayes <span class="pill">Supervised</span></h3><div class="meta"><span class="chip d-nlp">NLP</span><span class="chip d-tab">Tabular Data</span></div></div>
 <p><b>Use case:</b> Spam filtering, sentiment analysis and news-topic classification.</p>
 <p><b>How it works:</b> Applies Bayes' theorem with a simplifying assumption that features are independent, to estimate the probability of each class.</p></article>
 
-<article class="card t"><svg class="ic" style="color:var(--teal-d)" aria-hidden="true"><use href="#sig"/></svg>
+<article class="card t"><svg class="ic" style="color:var(--sup-d)" aria-hidden="true"><use href="#sig"/></svg>
 <div><h3>Logistic Regression <span class="pill">Supervised</span></h3><div class="meta"><span class="chip d-tab">Tabular Data</span><span class="chip d-nlp">NLP</span></div></div>
 <p><b>Use case:</b> Classify an email as spam or not; estimate customer churn or credit default.</p>
 <p><b>How it works:</b> Combines features into a weighted sum, then passes it through an S-shaped curve to output a probability between 0 and 1.</p></article>
 
-<article class="card t"><svg class="ic" style="color:var(--teal-d)" aria-hidden="true"><use href="#cnn"/></svg>
+<article class="card t"><svg class="ic" style="color:var(--sup-d)" aria-hidden="true"><use href="#cnn"/></svg>
 <div><h3>Convolutional Neural Network (CNN) <span class="pill">Supervised</span></h3><div class="meta"><span class="chip d-cv">Computer Vision</span></div></div>
 <p><b>Use case:</b> Detect tumours in medical scans; recognise objects in photos.</p>
 <p><b>How it works:</b> Learns visual features with stacked filters and pooling layers, building from edges to shapes to whole objects.</p></article>
 
-<article class="card t"><svg class="ic" style="color:var(--teal-d)" aria-hidden="true"><use href="#tree"/></svg>
+<article class="card t"><svg class="ic" style="color:var(--sup-d)" aria-hidden="true"><use href="#tree"/></svg>
 <div><h3>Decision Tree <span class="pill">Supervised</span></h3><div class="meta"><span class="chip d-tab">Tabular Data</span></div></div>
 <p><b>Use case:</b> Approve or decline a bank loan using income, credit history and debt.</p>
 <p><b>How it works:</b> Splits data with a series of yes/no questions on features until each branch ends in a prediction.</p></article>
 
-<article class="card c"><svg class="ic" style="color:var(--coral-d)" aria-hidden="true"><use href="#clus"/></svg>
+<article class="card c"><svg class="ic" style="color:var(--unsup-d)" aria-hidden="true"><use href="#clus"/></svg>
 <div><h3>k-Means Clustering <span class="pill">Unsupervised</span></h3><div class="meta"><span class="chip d-tab">Tabular Data</span><span class="chip d-cv">Computer Vision</span></div></div>
 <p><b>Use case:</b> Segment customers by behaviour; compress image colours.</p>
 <p><b>How it works:</b> Picks k centres, assigns each point to the nearest one, moves each centre to its group's average, and repeats until stable.</p></article>
 
-<article class="card t"><svg class="ic" style="color:var(--teal-d)" aria-hidden="true"><use href="#forest"/></svg>
+<article class="card t"><svg class="ic" style="color:var(--sup-d)" aria-hidden="true"><use href="#forest"/></svg>
 <div><h3>Random Forest <span class="pill">Supervised</span></h3><div class="meta"><span class="chip d-tab">Tabular Data</span></div></div>
 <p><b>Use case:</b> Detect fraudulent transactions in a bank.</p>
 <p><b>How it works:</b> Combines predictions from many decision trees, each trained on a random sample, to improve accuracy and robustness.</p></article>
 
-<article class="card c"><svg class="ic" style="color:var(--coral-d)" aria-hidden="true"><use href="#pca"/></svg>
+<article class="card c"><svg class="ic" style="color:var(--unsup-d)" aria-hidden="true"><use href="#pca"/></svg>
 <div><h3>Principal Component Analysis (PCA) <span class="pill">Unsupervised</span></h3><div class="meta"><span class="chip d-tab">Tabular Data</span><span class="chip d-cv">Computer Vision</span></div></div>
 <p><b>Use case:</b> Compress high-dimensional data into a few factors for visualisation or faster models.</p>
 <p><b>How it works:</b> Rotates the data onto new axes that capture the most variance, then keeps only the strongest ones.</p></article>
 
-<article class="card t"><svg class="ic" style="color:var(--teal-d)" aria-hidden="true"><use href="#svm"/></svg>
+<article class="card t"><svg class="ic" style="color:var(--sup-d)" aria-hidden="true"><use href="#svm"/></svg>
 <div><h3>Support Vector Machine (SVM) <span class="pill">Supervised</span></h3><div class="meta"><span class="chip d-cv">Computer Vision</span><span class="chip d-nlp">NLP</span><span class="chip d-tab">Tabular Data</span></div></div>
 <p><b>Use case:</b> Recognise handwritten digits; classify documents by topic.</p>
 <p><b>How it works:</b> Finds the boundary with the widest margin between classes; kernels let it model non-linear patterns.</p></article>
 
-<article class="card c"><svg class="ic" style="color:var(--coral-d)" aria-hidden="true"><use href="#gan"/></svg>
+<article class="card c"><svg class="ic" style="color:var(--unsup-d)" aria-hidden="true"><use href="#gan"/></svg>
 <div><h3>Generative Adversarial Network (GAN) <span class="pill">Unsupervised</span></h3><div class="meta"><span class="chip d-gen">Generative AI</span><span class="chip d-cv">Computer Vision</span></div></div>
 <p><b>Use case:</b> Generate synthetic faces, product concepts or training images.</p>
 <p><b>How it works:</b> A generator creates samples while a discriminator critiques them; the two networks improve through competition.</p></article>
@@ -169,15 +207,24 @@ h1{margin:0;text-align:center;color:var(--navy);font-size:clamp(2rem,5vw,3.4rem)
 <section class="box diff" aria-label="How they differ">
 <h2>How they differ</h2>
 <ul>
-<li class="t"><svg style="color:var(--teal-d)" aria-hidden="true"><use href="#reg"/></svg><b>Predict a number</b>Linear Regression</li>
-<li class="t"><svg style="color:var(--teal-d)" aria-hidden="true"><use href="#ppl"/></svg><b>Predict a category</b>Logistic Regression, Decision Tree, SVM</li>
-<li class="c"><svg style="color:var(--coral-d)" aria-hidden="true"><use href="#clus"/></svg><b>Discover groups</b>k-Means</li>
-<li class="c"><svg style="color:var(--coral-d)" aria-hidden="true"><use href="#pca"/></svg><b>Simplify features</b>PCA</li>
-<li class="c"><svg style="color:var(--coral-d)" aria-hidden="true"><use href="#img"/></svg><b>Create new content</b>GAN</li>
+<li class="t"><svg style="color:var(--sup-d)" aria-hidden="true"><use href="#reg"/></svg><b>Predict a number</b>Linear Regression</li>
+<li class="t"><svg style="color:var(--sup-d)" aria-hidden="true"><use href="#ppl"/></svg><b>Predict a category</b>Logistic Regression, Decision Tree, SVM</li>
+<li class="c"><svg style="color:var(--unsup-d)" aria-hidden="true"><use href="#clus"/></svg><b>Discover groups</b>k-Means</li>
+<li class="c"><svg style="color:var(--unsup-d)" aria-hidden="true"><use href="#pca"/></svg><b>Simplify features</b>PCA</li>
+<li class="c"><svg style="color:var(--unsup-d)" aria-hidden="true"><use href="#img"/></svg><b>Create new content</b>GAN</li>
 </ul>
 </section>
 
 <p class="box foot">Algorithm choice depends on the data, the target, interpretability needs and available labels.</p>
 </main>
+
+<footer class="site-footer">
+<div class="social-links">
+<a href="https://www.linkedin.com/in/khd151254/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+<a href="https://github.com/Hi10Kandoliya" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+</div>
+<p>&copy; 2026 Hitenkumar Kandoliya. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
